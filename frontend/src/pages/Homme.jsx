@@ -25,7 +25,7 @@ function Homme() {
     loadPopularMovies();
   }, []);
 
-  const handelSearch = () => {
+  const handelSearch = (e) => {
     e.preventDefault();
     alert(searchQuery);
     setSearchQuery("");
