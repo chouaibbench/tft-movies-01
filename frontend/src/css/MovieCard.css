@@ -122,3 +122,103 @@
     font-size: 1.2rem;
   }
 }
+
+.details-btn {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+}
+
+.details-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+  padding: 1.5rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: white;
+}
+
+.modal-body {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.modal-poster {
+  width: 150px;
+  min-width: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-info h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.modal-year {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.modal-overview {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .modal-poster {
+    width: 100%;
+    min-width: unset;
+  }
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/home.css";
 
-function Homme() {
+function Homme({ addToFavorites }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -25,10 +25,21 @@ function Homme() {
     loadPopularMovies();
   }, []);
 
-  const handelSearch = (e) => {
+  const handelSearch = async (e) => {
     e.preventDefault();
-    alert(searchQuery);
-    setSearchQuery("");
+    if (!searchQuery.trim()) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await searchMovies(searchQuery);
+      setMovies(results);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
+      setSearchQuery("");
+    }
   };
 
   return (
@@ -53,7 +64,7 @@ function Homme() {
       ) : (
         <div className="movies-grid">
           {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
+            <MovieCard movie={movie} key={movie.id} addToFavorites={addToFavorites} />
           ))}
         </div>
       )}
